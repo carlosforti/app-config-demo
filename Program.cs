@@ -31,6 +31,7 @@ namespace app_config_demo
                                         refresh.Register("TestApp:Settings:BackgroundColor")
                                                 .Register("TestApp:Settings:FontColor")
                                                 .Register("TestApp:Settings:Message");
+                                        refresh.SetCacheExpiration(TimeSpan.FromSeconds(5));
                                     });
                         });
                     })
