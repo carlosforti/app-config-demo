@@ -7,17 +7,17 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using app_config_demo.Models;
 using Microsoft.Extensions.Options;
+using Microsoft.Extensions.Configuration;
 
 namespace app_config_demo.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private readonly Settings _settings;
+        private Settings _settings;
 
         public HomeController(ILogger<HomeController> logger,
-            IOptionsSnapshot<Settings> settings)
-        {
+            IOptionsSnapshot<Settings> settings)        {
             _logger = logger;
             _settings = settings.Value;
         }
@@ -29,9 +29,11 @@ namespace app_config_demo.Controllers
             ViewData["FontColor"] = _settings.FontColor;
             ViewData["Message"] = _settings.Message;
 
-            return View();
-        }
+            var model = _settings;
 
+            return View(model);
+        }
+        
         public IActionResult Privacy()
         {
             return View();
