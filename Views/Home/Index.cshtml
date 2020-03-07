@@ -1,0 +1,14 @@
+﻿@using Microsoft.Extensions.Configuration
+@inject IConfiguration Configuration
+
+<style>
+    body {
+        background-color: @ViewData["BackgroundColor"]
+    }
+    h1 {
+        color: @ViewData["FontColor"];
+        font-size: @ViewData["FontSize"];
+    }
+</style>
+
+<h1>@ViewData["Message"]</h1>
