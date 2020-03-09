@@ -1,5 +1,7 @@
 # Aplicação demo para Azure Application Configuration
 
+![.NET Core](https://github.com/carlosforti/app-config-demo/workflows/.NET%20Core/badge.svg?branch=master)
+
 ## Como executar a demo
 
  1. Criar o recurso no portal do Azure, e copiar a Connection String
