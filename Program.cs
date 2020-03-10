@@ -26,6 +26,9 @@ namespace app_config_demo
                         config.AddAzureAppConfiguration(options =>
                         {
                             var appConfig = Environment.GetEnvironmentVariable("APP_CONFIG");
+                            Console.WriteLine("appConfig: " + appConfig);
+
+
                             options.Connect(appConfig)
                                 .ConfigureRefresh(refresh =>
                                     {
