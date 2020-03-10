@@ -22,7 +22,6 @@ namespace app_config_demo.Controllers
 
         public IActionResult Index()
         {
-            _logger.LogInformation(_settings.Message);
             ViewData["BackgroundColor"] = _settings.BackgroundColor;
             ViewData["FontSize"] = _settings.FontSize;
             ViewData["FontColor"] = _settings.FontColor;
