@@ -1,29 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using app_config_demo.Models;
+
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using app_config_demo.Models;
 using Microsoft.Extensions.Options;
-using Microsoft.Extensions.Configuration;
+
+using System.Diagnostics;
 
 namespace app_config_demo.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private Settings _settings;
+        private readonly Settings _settings;
 
         public HomeController(ILogger<HomeController> logger,
-            IOptionsSnapshot<Settings> settings)        {
+            IOptionsSnapshot<Settings> settings)
+        {
             _logger = logger;
             _settings = settings.Value;
         }
 
         public IActionResult Index()
         {
+            _logger.LogInformation(_settings.Message);
             ViewData["BackgroundColor"] = _settings.BackgroundColor;
             ViewData["FontSize"] = _settings.FontSize;
             ViewData["FontColor"] = _settings.FontColor;
@@ -33,7 +32,7 @@ namespace app_config_demo.Controllers
 
             return View(model);
         }
-        
+
         public IActionResult Privacy()
         {
             return View();
