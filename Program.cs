@@ -25,7 +25,8 @@ namespace app_config_demo
                         var settings = config.Build();
                         config.AddAzureAppConfiguration(options =>
                         {
-                            options.Connect(settings["ConnectionStrings:AppConfig"])
+                            var appConfig = Environment.GetEnvironmentVariable("APP_CONFIG");
+                            options.Connect(appConfig)
                                 .ConfigureRefresh(refresh =>
                                     {
                                         refresh.Register("TestApp:Settings:BackgroundColor")
