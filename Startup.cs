@@ -24,6 +24,7 @@ namespace app_config_demo
         public void ConfigureServices(IServiceCollection services)
         {
             services.Configure<Settings>(Configuration.GetSection("TestApp:Settings"));
+            services.AddApplicationInsightsTelemetry();
             services.AddControllersWithViews();
         }
 
