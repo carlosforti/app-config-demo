@@ -26,19 +26,16 @@ namespace app_config_demo
                         config.AddAzureAppConfiguration(options =>
                         {
                             var appConfig = Environment.GetEnvironmentVariable("APP_CONFIG");
-                            Console.WriteLine("appConfig: " + appConfig);
-
-
                             options.Connect(appConfig)
-                                .ConfigureRefresh(refresh =>
-                                    {
-                                        refresh.Register("TestApp:Settings:BackgroundColor")
-                                                .Register("TestApp:Settings:FontColor")
-                                                .Register("TestApp:Settings:FontColor")
-                                                .Register("TestApp:Settings:FontSize")
-                                                .Register("TestApp:Settings:Message");
-                                        refresh.SetCacheExpiration(TimeSpan.FromSeconds(5));
-                                    });
+                                   .ConfigureRefresh(refresh =>
+                                                     {
+                                                         refresh.Register("TestApp:Settings:BackgroundColor")
+                                                                .Register("TestApp:Settings:FontColor")
+                                                                .Register("TestApp:Settings:FontColor")
+                                                                .Register("TestApp:Settings:FontSize")
+                                                                .Register("TestApp:Settings:Message");
+                                                         refresh.SetCacheExpiration(TimeSpan.FromSeconds(5));
+                                                     });
                         });
                     })
                 .UseStartup<Startup>());
