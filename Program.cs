@@ -38,6 +38,6 @@ namespace app_config_demo
                                                      });
                         });
                     })
-                .UseStartup<Startup>());
+                .UseStartup<Startup>())
     }
 }
