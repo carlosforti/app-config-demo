@@ -6,5 +6,6 @@ namespace app_config_demo
         public long FontSize { get; set; }
         public string FontColor { get; set; }
         public string Message { get; set; }
+        public string ConnectionString { get; set; }
     }
 }

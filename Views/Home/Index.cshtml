@@ -1,4 +1,4 @@
-﻿@model Settings;
+﻿@model IEnumerable<User>;
 @using Microsoft.Extensions.Configuration
 @inject IConfiguration Configuration
 
@@ -16,3 +16,29 @@
 </style>
 
 <h1>@ViewData["Message"]</h1>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>E-mail</th>
+            <th>Gender</th>
+            <th>IP Address</th>
+            <th>Country</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.FirstName</td>
+                <td>@item.LastName</td>
+                <td>@item.Email</td>
+                <td>@item.Gender</td>
+                <td>@item.IpAddress</td>
+                <td>@item.Country</td>
+            </tr>
+        }
+    </tbody>
+</table>
