@@ -5,6 +5,8 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
 using System.Diagnostics;
+using System.Linq;
+using app_config_demo.Database;
 
 namespace app_config_demo.Controllers
 {
@@ -12,12 +14,16 @@ namespace app_config_demo.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly Settings _settings;
+        private readonly AppContext _context;
 
         public HomeController(ILogger<HomeController> logger,
-            IOptionsSnapshot<Settings> settings)
+            IOptionsSnapshot<Settings> settings, AppContext context)
         {
             _logger = logger;
+            _context = context;
             _settings = settings.Value;
+
+            _logger.LogInformation(_context.Users.Count().ToString());
         }
 
         public IActionResult Index()
@@ -27,9 +33,9 @@ namespace app_config_demo.Controllers
             ViewData["FontColor"] = _settings.FontColor;
             ViewData["Message"] = _settings.Message;
 
-            var model = _settings;
+            var users = _context.Users.ToList();
 
-            return View(model);
+            return View(users);
         }
 
         public IActionResult Privacy()

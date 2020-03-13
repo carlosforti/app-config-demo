@@ -1,5 +1,8 @@
+using app_config_demo.Database;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
+
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -19,10 +22,12 @@ namespace app_config_demo
         public void ConfigureServices(IServiceCollection services)
         {
             var section = Configuration.GetSection("TestApp:Settings");
-            
+
             services.Configure<Settings>(section);
             services.AddApplicationInsightsTelemetry();
             services.AddControllersWithViews();
+
+            services.AddDbContext<AppContext>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
